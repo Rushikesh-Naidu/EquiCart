@@ -1,1 +1,60 @@
-<p>login works!</p>
+<!-- Splash Screen -->
+<div class="login-screen" *ngIf="!showMainLoginScreen" style="display: flex; flex-direction: row;">
+  <img src="assets/images/logo-and-name.png" class="splash-logo" />
+</div>
+
+<div class="login-screen">
+  <img src="assets/images/logo-and-name.png" class="logo-to-top" />
+  <!-- <div class="formClass" *ngIf="showLoginPanel">
+    <form [formGroup]="loginForm">
+      <div class="row" style="display: flex; align-items: center;">
+        <div class="col-12">
+          
+        </div>
+      </div>
+    </form>
+  </div> -->
+  <button mat-raised-button class="sign-button" (click)="openLoginBottomSheet()">SIGN IN</button>
+  <p class="or-class">OR</p>
+  <button mat-raised-button class="sign-button" style="margin-top: 50vh;">REGISTER</button>
+</div>
+
+<!-- Login Bottom Sheet -->
+<ng-template #loginBottomSheet>
+  <mat-nav-list>
+    <mat-stepper [linear]="true" #stepper>
+      <mat-step [stepControl]="firstFormGroup" style="height: 50vh !important;">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Enter you phone number</ng-template>
+          <mat-form-field>
+            <mat-label>Phone number</mat-label>
+            <input matInput formControlName="firstCtrl" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup" label="Enter you pin">
+        <form [formGroup]="secondFormGroup">
+          <mat-form-field>
+            <mat-label>Pin</mat-label>
+            <input matInput formControlName="secondCtrl" required>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </mat-nav-list>
+</ng-template>
