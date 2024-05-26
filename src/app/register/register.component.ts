@@ -1,14 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input'
+import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
+
 @Component({
-  selector: 'app-login',
+  selector: 'app-register',
   standalone: true,
   imports: [
     CommonModule,
@@ -19,36 +20,39 @@ import { Router } from '@angular/router';
     MatButtonModule,
     MatCardModule
   ],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.css'
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent {
 
-  loginForm: FormGroup;
+  registerForm : FormGroup;
   submitted: boolean = false;
 
   constructor(
     public formBuilder: FormBuilder,
     public bottomSheet: MatBottomSheet,
     public router: Router
-  ) { }
+  ){}
 
-  ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      phoneNumber: ['',[Validators.required]],
-      passCode: ['',[Validators.required]]
+  ngOnInit(){
+    this.registerForm = this.formBuilder.group({
+      name: ['',[Validators.required]],
+      phone: ['',[Validators.required]],
+      email: ['',[Validators.required]],
+      pin: ['',[Validators.required]],
+      confirmPin: ['',[Validators.required]]
     })
   }
-
-  login(){
-    this.submitted = true;
-    this.loginForm.markAllAsTouched();
-    if(this.loginForm.controls['phoneNumber'].value==='9999999999' && this.loginForm.controls['passCode'].value==='0000'){
-      this.router.navigate(['/home']);
-    }
+  
+  signIn(){
+    this.router.navigate(['/login']);
   }
 
   register(){
-    this.router.navigate(['/register'])
+    this.submitted = true;
+    this.registerForm.markAllAsTouched();
+    if(this.registerForm.valid){
+      this.router.navigate(['/home'])
+    }
   }
 }

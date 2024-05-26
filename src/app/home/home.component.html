@@ -1,0 +1,62 @@
+<mat-sidenav-container autosize>
+    <mat-sidenav mode="side" [ngClass]="!isCollapsed ? 'expanded' : ''" [opened]="isOpened ? 'true' : 'false'" style="background-color: black;">
+    <img src="assets/images/logo-cart-label-white.png" class="logo" style="width: 100px; margin-left: 85px;"><br>
+    <img src="assets/images/name-logo-white.png" class="logo" style="width: 200px; margin-left: 40px; margin-top: 10px;" >
+
+        <mat-nav-list style="margin-left: 22.5px; padding-top: 50px;">
+            <a mat-list-item (click)="navigateTo('')">
+                <div class="entry" [style.color]="pathName=='/home'?'orange':'white'">
+                    <mat-icon><span class="material-icons-round">
+                        home
+                        </span></mat-icon>
+                    <span>Home</span>
+                </div>
+            </a>
+            <a mat-list-item (click)="navigateTo('/profile')">
+                <div class="entry" [style.color]="pathName=='/profile'?'orange':'white'">
+                    <mat-icon>account_circle</mat-icon>
+                    <span>Profile</span>
+                </div>
+            </a>
+            <a mat-list-item (click)="navigateTo('/my_orders')">
+                <div class="entry" [style.color]="pathName=='/my_orders'?'orange':'white'">
+                    <mat-icon>local_shipping</mat-icon>
+                    <span>Orders</span>
+                </div>
+            </a>
+            <a mat-list-item (click)="navigateTo('/address_book')">
+                <div class="entry" [style.color]="pathName=='/address_book'?'orange':'white'">
+                    <mat-icon><span class="material-icons-round">
+                        import_contacts
+                        </span></mat-icon>
+                    <span>Address Book</span>
+                </div>
+            </a>
+            <a mat-list-item (click)="navigateTo('/cart')">
+                <div class="entry" [style.color]="pathName=='/cart'?'orange':'white'">
+                    <mat-icon><span class="material-icons-round">
+                        shopping_cart
+                        </span></mat-icon>
+                    <span>Cart</span>
+                </div>
+            </a>
+        </mat-nav-list>
+        <div class="logout" (click)="logout()" style="cursor: pointer;" [style.color]="pathName=='/login'?'orange':'white'">
+            <mat-icon><span class="material-icons-round">
+                logout
+                </span></mat-icon>
+            <span>Logout</span>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar style="background-color: orange;">
+            <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
+                <mat-icon>menu</mat-icon>
+              </button>
+            <h1>Welcome to EquiCart</h1>
+        </mat-toolbar>
+        <div style="margin: 30px !important;">
+            <router-outlet />
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
