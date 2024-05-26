@@ -25,33 +25,33 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
 
-  registerForm : FormGroup;
+  registerForm: FormGroup;
   submitted: boolean = false;
 
   constructor(
     public formBuilder: FormBuilder,
     public bottomSheet: MatBottomSheet,
     public router: Router
-  ){}
+  ) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      name: ['',[Validators.required]],
-      phone: ['',[Validators.required]],
-      email: ['',[Validators.required]],
-      pin: ['',[Validators.required]],
-      confirmPin: ['',[Validators.required]]
+      name: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      pin: ['', [Validators.required]],
+      confirmPin: ['', [Validators.required]]
     })
   }
-  
-  signIn(){
+
+  signIn() {
     this.router.navigate(['/login']);
   }
 
-  register(){
+  register() {
     this.submitted = true;
     this.registerForm.markAllAsTouched();
-    if(this.registerForm.valid){
+    if (this.registerForm.valid) {
       this.router.navigate(['/home'])
     }
   }

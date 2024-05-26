@@ -6,7 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { OrdersComponent } from './orders/orders.component';
 import { AddressBookComponent } from './address-book/address-book.component';
 import { CartComponent } from './cart/cart.component';
-import { SearchComponent } from './search/search.component';
+import { SideNavBarComponent } from './side-nav-bar/side-nav-bar.component';
 
 export const routes: Routes = [
     {
@@ -24,11 +24,11 @@ export const routes: Routes = [
     },
     {
         path: '',
-        component: HomeComponent,
+        component: SideNavBarComponent,
         children:[
             {
                 path:'home',
-                component: SearchComponent
+                component: HomeComponent
             },
             {
                 path:'profile',

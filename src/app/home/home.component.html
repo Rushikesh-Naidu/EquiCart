@@ -1,62 +1,8 @@
-<mat-sidenav-container autosize>
-    <mat-sidenav mode="side" [ngClass]="!isCollapsed ? 'expanded' : ''" [opened]="isOpened ? 'true' : 'false'" style="background-color: black;">
-    <img src="assets/images/logo-cart-label-white.png" style="width: 100px; margin-left: 85px;"><br>
-    <img src="assets/images/name-logo-white.png" style="width: 200px; margin-left: 40px; margin-top: 10px;" >
-
-        <mat-nav-list style="margin-left: 22.5px; padding-top: 50px;">
-            <a mat-list-item (click)="navigateTo('')">
-                <div class="entry" [style.color]="pathName=='/home'?'orange':'white'">
-                    <mat-icon><span class="material-icons-round">
-                        home
-                        </span></mat-icon>
-                    <span>Home</span>
-                </div>
-            </a>
-            <a mat-list-item (click)="navigateTo('/profile')">
-                <div class="entry" [style.color]="pathName=='/profile'?'orange':'white'">
-                    <mat-icon>account_circle</mat-icon>
-                    <span>Profile</span>
-                </div>
-            </a>
-            <a mat-list-item (click)="navigateTo('/my_orders')">
-                <div class="entry" [style.color]="pathName=='/my_orders'?'orange':'white'">
-                    <mat-icon>local_shipping</mat-icon>
-                    <span>Orders</span>
-                </div>
-            </a>
-            <a mat-list-item (click)="navigateTo('/address_book')">
-                <div class="entry" [style.color]="pathName=='/address_book'?'orange':'white'">
-                    <mat-icon><span class="material-icons-round">
-                        import_contacts
-                        </span></mat-icon>
-                    <span>Address Book</span>
-                </div>
-            </a>
-            <a mat-list-item (click)="navigateTo('/cart')">
-                <div class="entry" [style.color]="pathName=='/cart'?'orange':'white'">
-                    <mat-icon><span class="material-icons-round">
-                        shopping_cart
-                        </span></mat-icon>
-                    <span>Cart</span>
-                </div>
-            </a>
-        </mat-nav-list>
-        <div class="logout" (click)="logout()" style="cursor: pointer;" [style.color]="pathName=='/login'?'orange':'white'">
-            <mat-icon><span class="material-icons-round">
-                logout
-                </span></mat-icon>
-            <span>Logout</span>
-        </div>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <mat-toolbar style="background-color: orange;">
-            <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
-                <mat-icon>menu</mat-icon>
-              </button>
-            <h1>Welcome to EquiCart</h1>
-        </mat-toolbar>
-        <div style="margin: 30px !important;">
-            <router-outlet />
-        </div>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+<form [formGroup]="homeForm">
+    <mat-form-field appearance="outline" class="mt-3 w-80 ms-1 me-1">
+        <mat-label>Enter your phone number</mat-label>
+        <input matInput type="text" maxlength="10" style="font-size: 20px" formControlName="home">
+        <svg matPrefix style="margin: 0 10px;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000"><path d="M280-40q-33 0-56.5-23.5T200-120v-720q0-33 23.5-56.5T280-920h400q33 0 56.5 23.5T760-840v720q0 33-23.5 56.5T680-40H280Zm0-200v120h400v-120H280Zm200 100q17 0 28.5-11.5T520-180q0-17-11.5-28.5T480-220q-17 0-28.5 11.5T440-180q0 17 11.5 28.5T480-140ZM280-320h400v-400H280v400Zm0-480h400v-40H280v40Zm0 560v120-120Zm0-560v-40 40Z"/></svg>
+        <!-- <mat-hint style="color: red" *ngIf="submitted && loginForm.controls['phoneNumber'].errors && loginForm.controls['phoneNumber'].errors['required']">Please enter your phone number</mat-hint> -->
+    </mat-form-field>
+</form>

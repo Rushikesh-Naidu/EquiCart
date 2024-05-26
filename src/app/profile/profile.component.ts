@@ -6,9 +6,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatListModule } from '@angular/material/list';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-profile',
@@ -33,10 +30,10 @@ export class ProfileComponent {
   needToEdit: boolean = false;
 
   constructor(
-    private formBuilder : FormBuilder,
-  ){}
+    private formBuilder: FormBuilder,
+  ) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.profileForm = this.formBuilder.group({
       name: ['Rushikesh'],
       phone: ['9999999999'],

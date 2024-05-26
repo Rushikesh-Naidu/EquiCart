@@ -1,1 +1,56 @@
-<p>address-book works!</p>
+<div class="row" style="width: 800px; border: 2px solid orange; height: auto; margin: auto; border-radius: 8px;">
+    <div class="col-12" style="display: flex; align-items: center;">
+        <form [formGroup]="addressForm" style="text-align: center;">
+            <mat-radio-button value="1" (change)="addressSelection()">
+                <mat-form-field appearance="outline" class="w-100 mt-2 ms-1 me-1">
+                    <mat-label>User Name</mat-label>
+                    <textarea matInput type="text" style="width: 100%;" [readonly]="!needToEdit" type="font-size: 20px"
+                        formControlName="address1" (input)="submitted = false"></textarea>
+                    <svg matPrefix style="margin: 0 10px;" xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 -960 960 960" width="24px" fill="#000">
+                        <path
+                            d="M563-491q73-54 114-118.5T718-738q0-32-10.5-47T679-800q-47 0-83 79.5T560-541q0 14 .5 26.5T563-491ZM120-120v-80h80v80h-80Zm160 0v-80h80v80h-80Zm160 0v-80h80v80h-80Zm160 0v-80h80v80h-80Zm160 0v-80h80v80h-80ZM136-280l-56-56 64-64-64-64 56-56 64 64 64-64 56 56-64 64 64 64-56 56-64-64-64 64Zm482-40q-30 0-55-11.5T520-369q-25 14-51.5 25T414-322l-28-75q28-10 53.5-21.5T489-443q-5-22-7.5-48t-2.5-56q0-144 57-238.5T679-880q52 0 85 38.5T797-734q0 86-54.5 170T591-413q7 7 14.5 10.5T621-399q26 0 60.5-33t62.5-87l73 34q-7 17-11 41t1 42q10-5 23.5-17t27.5-30l63 49q-26 36-60 58t-63 22q-21 0-37.5-12.5T733-371q-28 25-57 38t-58 13Z" />
+                    </svg>
+                    <mat-hint style="color: red"
+                        *ngIf="submitted && addressForm.controls['address1'].errors && addressForm.controls['address1'].errors['required']">Please
+                        enter your pin</mat-hint>
+                </mat-form-field>
+            </mat-radio-button>
+
+            <mat-form-field appearance="outline" class="w-80 mt-2 ms-1 me-1">
+                <mat-label>User Phone Number</mat-label>
+                <input matInput type="text" maxlength="4" [readonly]="!needToEdit" type="font-size: 20px"
+                    formControlName="address1" (input)="submitted = false">
+                <svg matPrefix style="margin: 0 10px;" xmlns="http://www.w3.org/2000/svg" height="24px"
+                    viewBox="0 -960 960 960" width="24px" fill="#000">
+                    <path
+                        d="M280-40q-33 0-56.5-23.5T200-120v-720q0-33 23.5-56.5T280-920h400q33 0 56.5 23.5T760-840v720q0 33-23.5 56.5T680-40H280Zm0-200v120h400v-120H280Zm200 100q17 0 28.5-11.5T520-180q0-17-11.5-28.5T480-220q-17 0-28.5 11.5T440-180q0 17 11.5 28.5T480-140ZM280-320h400v-400H280v400Zm0-480h400v-40H280v40Zm0 560v120-120Zm0-560v-40 40Z" />
+                </svg>
+                <mat-hint style="color: red"
+                    *ngIf="submitted && addressForm.controls['address1'].errors && addressForm.controls['address1'].errors['required']">Please
+                    enter your pin</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-80 mt-2 ms-1 me-1">
+                <mat-label>User Email</mat-label>
+                <input matInput type="text" maxlength="4" [readonly]="!needToEdit" type="font-size: 20px"
+                    formControlName="address1" (input)="submitted = false">
+                <svg matPrefix style="margin: 0 10px;" xmlns="http://www.w3.org/2000/svg" height="24px"
+                    viewBox="0 -960 960 960" width="24px" fill="#000">
+                    <path
+                        d="M240-640h360v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85h-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640Zm0 480h480v-400H240v400Zm240-120q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM240-160v-400 400Z" />
+                </svg>
+                <mat-hint style="color: red"
+                    *ngIf="submitted && addressForm.controls['address1'].errors && addressForm.controls['address1'].errors['required']">Please
+                    enter your pin</mat-hint>
+            </mat-form-field>
+        </form>
+    </div>
+</div>
+<div class="row" style="width: 800px; height: auto; margin: auto;">
+    <div class="col-6 mt-2" style="text-align: center;">
+        <button mat-stroked-button style="width: 75%; border: 2px solid orange; height: 50px;">CHANGE PASSWORD</button>
+    </div>
+    <div class="col-6 mt-2" style="text-align: center;">
+        <button mat-raised-button style="width: 75%; background-color: orange; height: 50px;">EDIT PROFILE</button>
+    </div>
+</div>
