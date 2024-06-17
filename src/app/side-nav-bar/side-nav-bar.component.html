@@ -19,18 +19,18 @@
                     <span>Profile</span>
                 </div>
             </a>
-            <a mat-list-item (click)="navigateTo('/my_orders')">
-                <div class="entry" [style.color]="pathName=='/my_orders'?'orange':'white'">
-                    <mat-icon>local_shipping</mat-icon>
-                    <span>Orders</span>
-                </div>
-            </a>
             <a mat-list-item (click)="navigateTo('/address_book')">
                 <div class="entry" [style.color]="pathName=='/address_book'?'orange':'white'">
                     <mat-icon><span class="material-icons-round">
                             import_contacts
                         </span></mat-icon>
                     <span>Address Book</span>
+                </div>
+            </a>
+            <a mat-list-item (click)="navigateTo('/my_orders')">
+                <div class="entry" [style.color]="pathName=='/my_orders'?'orange':'white'">
+                    <mat-icon>local_shipping</mat-icon>
+                    <span>Orders</span>
                 </div>
             </a>
             <a mat-list-item (click)="navigateTo('/cart')">

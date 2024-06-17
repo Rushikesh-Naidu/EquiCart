@@ -1,0 +1,7 @@
+.item-card{
+    width: 150px;
+    height: 350px;
+    border: 2px solid orange;
+    border-radius: 8px;
+    background-color: white;
+}

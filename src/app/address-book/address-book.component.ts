@@ -37,7 +37,7 @@ export class AddressBookComponent {
 
   ngOnInit() {
     this.addressForm = this.formBuilder.group({
-      address1: ['', [Validators.required]],
+      address1: ['#119, 5th Floor, 2nd Cross, 4th Main, Mico Layout, Kempapura, Hebbal, Bengaluru - 560024', [Validators.required]],
       address2: ['', [Validators.required]],
       address3: ['', [Validators.required]],
     })
