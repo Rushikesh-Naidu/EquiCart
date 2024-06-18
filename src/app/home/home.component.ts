@@ -144,6 +144,7 @@ export class HomeComponent {
       added: false
     },
   ]
+  filteredProducts: any;
 
   constructor(
     private router: Router,
@@ -153,7 +154,32 @@ export class HomeComponent {
 
   ngOnInit() {
     this.homeForm = this.formBuilder.group({
-      search: ['']
+      search: [''],
+      searchList: [this.productList]
     })
+  }
+
+  increaseCount(obj : any){
+    if(obj.quantity>=0){
+      obj.quantity++;      
+    }
+  }
+
+  decreaseCount(obj : any){
+    if(obj.quantity>0){
+      obj.quantity--;      
+    }
+  }
+
+  search(searchText : any) {
+    if (searchText == '') {
+      this.productList = this.homeForm.controls['searchList'].value;
+    } else {
+      this.filteredProducts = this.productList.filter((element) => {
+        element.name.toLowerCase().includes(searchText.toLowerCase());
+      });
+      this.productList = this.filteredProducts;
+    }
+    console.log(this.productList);
   }
 }

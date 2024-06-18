@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -17,7 +18,8 @@ import { Router, RouterOutlet } from '@angular/router';
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-    RouterOutlet
+    RouterOutlet,
+    MatBadgeModule
   ],
   templateUrl: './side-nav-bar.component.html',
   styleUrl: './side-nav-bar.component.css'
