@@ -44,7 +44,8 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     this.loginForm.markAllAsTouched();
     if(this.loginForm.controls['phoneNumber'].value==='9999999999' && this.loginForm.controls['passCode'].value==='0000'){
-      this.router.navigate(['/home']);
+      // this.router.navigate(['/home']);
+      
     }
   }
 

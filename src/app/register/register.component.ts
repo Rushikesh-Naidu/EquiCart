@@ -7,6 +7,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
+import { ApiService } from '../api.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +20,8 @@ import { Router } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
@@ -31,7 +34,8 @@ export class RegisterComponent {
   constructor(
     public formBuilder: FormBuilder,
     public bottomSheet: MatBottomSheet,
-    public router: Router
+    public router: Router,
+    public apiService: ApiService
   ) { }
 
   ngOnInit() {
@@ -50,9 +54,22 @@ export class RegisterComponent {
 
   register() {
     this.submitted = true;
+    var url = "register"
     this.registerForm.markAllAsTouched();
+    console.log(this.registerForm.value);
+    
+    let reqBody = this.registerForm.value;
     if (this.registerForm.valid) {
-      this.router.navigate(['/home'])
+      this.apiService.postMethod(url, reqBody).subscribe({
+        next: (res:any)=>{
+          console.log(res);
+          
+        },error:(err:any)=>{
+          console.log(err);
+          
+        }
+      })
+      // this.router.navigate(['/home'])
     }
   }
 }
