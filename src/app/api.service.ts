@@ -4,9 +4,7 @@ import { Observable } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json',
-    'Authorization': 'my-auth-token',
   }),
 };
 
@@ -15,8 +13,7 @@ const httpOptions = {
 })
 export class ApiService {
 
-  apiUrl = "localhost:3000/api"
-
+  apiUrl = "http://localhost:3000/api"
 
   constructor(
     private http: HttpClient
@@ -31,11 +28,11 @@ export class ApiService {
   }
 
   postMethod(url:any, body: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/${url}`, body, httpOptions);
+    return this.http.post<any>(`${this.apiUrl}/${url}`, body);
   }
 
   putMethod(url : any, id: number, body: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${url}/${id}`, body);
+    return this.http.put<any>(`${this.apiUrl}/${url}/${id}`, body, httpOptions);
   }
 
   deletePost(url: any,id: number): Observable<any> {

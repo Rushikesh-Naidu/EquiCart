@@ -4,7 +4,7 @@
         <img src="assets/images/logo-cart-label-white.png" style="width: 100px; margin-left: 85px;"><br>
         <img src="assets/images/name-logo-white.png" style="width: 200px; margin-left: 40px; margin-top: 10px;">
 
-        <mat-nav-list style="margin-left: 22.5px; padding-top: 50px;">
+        <mat-nav-list style="margin-left: 22.5px; padding-top: 50px;" *ngIf="accountType == 'USER'">
             <a mat-list-item (click)="navigateTo('/home')">
                 <div class="entry" [style.color]="pathName=='/home'?'orange':'white'">
                     <mat-icon><span class="material-icons-round">
@@ -35,13 +35,31 @@
             </a>
             <a mat-list-item (click)="navigateTo('/cart')">
                 <div class="entry" [style.color]="pathName=='/cart'?'orange':'white'">
-                    <mat-icon matBadge="4" matBadgeOverlap="true" matBadgeSize="small"><span class="material-icons-round">
+                    <mat-icon><span class="material-icons-round">
                             shopping_cart
                         </span></mat-icon>
                     <span>Cart</span>
                 </div>
             </a>
         </mat-nav-list>
+
+        <mat-nav-list style="margin-left: 22.5px; padding-top: 50px;" *ngIf="accountType == 'ADMIN'">
+            <a mat-list-item (click)="navigateTo('/product')">
+                <div class="entry" [style.color]="pathName=='/product'?'orange':'white'">
+                    <mat-icon><span class="material-icons-round">
+                            inventory
+                        </span></mat-icon>
+                    <span>Product</span>
+                </div>
+            </a>
+            <a mat-list-item (click)="navigateTo('/store')">
+                <div class="entry" [style.color]="pathName=='/store'?'orange':'white'">
+                    <mat-icon>storefront</mat-icon>
+                    <span>Store</span>
+                </div>
+            </a>
+        </mat-nav-list>
+
         <div class="logout" (click)="logout()" style="cursor: pointer;"
             [style.color]="pathName=='/login'?'orange':'white'">
             <mat-icon><span class="material-icons-round">

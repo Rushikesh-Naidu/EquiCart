@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
@@ -35,7 +37,8 @@ export class RegisterComponent {
     public formBuilder: FormBuilder,
     public bottomSheet: MatBottomSheet,
     public router: Router,
-    public apiService: ApiService
+    public apiService: ApiService,
+    public snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -54,19 +57,32 @@ export class RegisterComponent {
 
   register() {
     this.submitted = true;
-    var url = "register"
+    var url = "createUser"
     this.registerForm.markAllAsTouched();
     console.log(this.registerForm.value);
     
-    let reqBody = this.registerForm.value;
     if (this.registerForm.valid) {
+      let reqBody = {
+        "name": this.registerForm.controls['name'].value,
+        "phone": this.registerForm.controls['phone'].value,
+        "email": this.registerForm.controls['email'].value,
+        "pin": this.registerForm.controls['pin'].value,
+        "confirmPin": this.registerForm.controls['confirmPin'].value,
+      };
+      console.log(reqBody);
+      
       this.apiService.postMethod(url, reqBody).subscribe({
         next: (res:any)=>{
           console.log(res);
-          
+          this.snackBar.open("Account create successfully. Please login!","Okay",{
+            duration: 3000
+          })
+          this.signIn();
         },error:(err:any)=>{
           console.log(err);
-          
+          this.snackBar.open("Server didn't respond. Please try again!","Okay",{
+            duration: 3000
+          })
         }
       })
       // this.router.navigate(['/home'])

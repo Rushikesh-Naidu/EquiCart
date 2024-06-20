@@ -7,6 +7,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input'
 import { Router } from '@angular/router';
+import { ApiService } from '../api.service';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -17,7 +19,8 @@ import { Router } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatSnackBarModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -30,26 +33,61 @@ export class LoginComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     public bottomSheet: MatBottomSheet,
-    public router: Router
+    public router: Router,
+    public apiService: ApiService,
+    public snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      phoneNumber: ['',[Validators.required]],
-      passCode: ['',[Validators.required]]
+      phoneNumber: ['', [Validators.required]],
+      passCode: ['', [Validators.required]]
     })
   }
 
-  login(){
+  login() {
     this.submitted = true;
     this.loginForm.markAllAsTouched();
-    if(this.loginForm.controls['phoneNumber'].value==='9999999999' && this.loginForm.controls['passCode'].value==='0000'){
-      // this.router.navigate(['/home']);
-      
-    }
+    var url = "userValid/"+this.loginForm.controls['phoneNumber'].value;
+    this.apiService.getMethod(url).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        if(res && res.length>0){
+          if(res[0].pin == this.loginForm.controls['passCode'].value){
+            if(res[0].phone == "9999999999"){
+              this.snackBar.open("Admin login successful..!","Okay",{
+                duration: 3000
+              })
+              window.sessionStorage.setItem("isAdmin", "true");
+              window.sessionStorage.setItem("name",res[0].name);
+              window.sessionStorage.setItem("phone",res[0].phone);
+              this.router.navigate(['/product'])
+            } else {
+              this.snackBar.open("User login successful..!","Okay",{
+                duration: 3000
+              })
+              window.sessionStorage.setItem("isAdmin", "false");
+              window.sessionStorage.setItem("name",res[0].name);
+              window.sessionStorage.setItem("phone",res[0].phone);
+              this.router.navigate(['/home'])
+            }
+          } else {
+            this.snackBar.open("Enter valid credentials..!","Okay",{
+              duration: 3000
+            })  
+          }
+        } else {
+          this.snackBar.open("Could not find phone number..!","Okay",{
+            duration: 3000
+          })
+        }
+      }, error: (err: any) => {
+        console.log(err);
+      }
+    })
   }
 
-  register(){
+  register() {
     this.router.navigate(['/register'])
   }
 }

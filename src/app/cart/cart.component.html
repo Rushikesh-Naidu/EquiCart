@@ -6,12 +6,12 @@
     <div class="row">
         <div class="col-12" *ngFor="let obj of cartList">
             <div class="row">
-                <div class="col-11 mt-2">
+                <div class="col-11 mt-1">
                     <span style="font-size: 18px; font-weight: 500;">
                         {{obj.name}}
                     </span>
                 </div>
-                <div class="col-1">
+                <div class="col-1 mt-1">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px"  style="cursor: pointer;" (click)="decreaseCount(obj)" viewBox="0 -960 960 960" width="24px"
                     fill="#5f6368">
                     <path
@@ -28,11 +28,33 @@
                 </div>
             </div>
         </div>
-        <div class="col-11" style="text-align: end;">
-            Total:
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-1" style="height: 100px; display: flex; align-items: center;">
+            <mat-radio-button value="1">
+            </mat-radio-button>
         </div>
-        <div class="col-1" style="text-align: center;">
-            9
+        <div class="col-4">
+            <img width="100px" height="100px" src="https://yt3.googleusercontent.com/YnrIWet65YxJQJlwlXI33E5r22UzWWHYGoL4Jtx_V2pvdbyhgLN1SAASnFOGZ4CuKjBNZjMFTQ=s900-c-k-c0x00ffffff-no-rj" alt="">
+        </div>
+        <div class="col-7" style="text-align: end; font-size: 20px; height: 100px; display: flex; align-items: center;">
+            <s style="color: red;" class="me-2">Rs 200/-</s>
+            <span style="color: green;">Rs 179/-</span>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-1" style="height: 100px; display: flex; align-items: center;">
+            <mat-radio-button value="1">
+            </mat-radio-button>
+        </div>
+        <div class="col-4">
+            <img width="100px" height="100px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvyY9h2MT3h0_qEukV3jQ1pNe__osgG0h4Pw&s" alt="">
+        </div>
+        <div class="col-7" style="text-align: end; font-size: 20px; height: 100px; display: flex; align-items: center;">
+            <s style="color: red;" class="me-2">Rs 200/-</s>
+            <span style="color: green;">Rs 165/-</span>
         </div>
     </div>
 </div>

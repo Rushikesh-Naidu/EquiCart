@@ -31,6 +31,7 @@ export class SideNavBarComponent {
   isOpened = true;
   isCollapsed = false;
   pathName: string;
+  accountType: any;
 
   constructor(
     private router: Router,
@@ -39,6 +40,12 @@ export class SideNavBarComponent {
   ngOnInit() {
     this.pathName = this.router.url
     console.log(this.pathName);
+    if(window.sessionStorage.getItem("isAdmin")=="true"){
+      this.accountType = "ADMIN"
+    } else {
+      this.accountType = "USER"
+    }
+    
   }
 
   toggleMenu() {

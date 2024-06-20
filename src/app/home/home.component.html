@@ -1,7 +1,8 @@
 <form [formGroup]="homeForm">
     <mat-form-field appearance="outline" class="mt-3 w-100 me-1">
         <mat-label>Search the product</mat-label>
-        <input matInput type="text" (keyup)="search(homeForm.controls['search'].value)" id="search" style="font-size: 20px" formControlName="search">
+        <input matInput type="text" (keyup)="search(homeForm.controls['search'].value)" id="search"
+            style="font-size: 20px" formControlName="search">
         <svg matPrefix style="margin: 0 10px;" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
             width="24px" fill="#000">
             <path
@@ -14,7 +15,7 @@
     <div class="item-card col-3 ms-1 me-1 mb-1 mt-1" *ngFor="let obj of productList">
         <div class="">
             <div class="mt-1 ms-2 me-2" style="width: 225px; height: 150px;">
-                <img width="100%" height="150px" *ngIf="obj.image === ''"
+                <img style="width: 100%; height: 150px !important;" *ngIf="obj.image === ''"
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEaYTaC-q-QWUu2g7QgVvRKkJkqXjXtjBU2w&s"
                     alt="">
                 <img width="100%" *ngIf="obj.image != ''" [src]="obj.image" alt="">
@@ -35,16 +36,16 @@
                 </span>
             </div>
             <div>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px"  style="cursor: pointer;" (click)="decreaseCount(obj)" viewBox="0 -960 960 960" width="24px"
-                    fill="#5f6368">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" style="cursor: pointer;"
+                    (click)="decreaseCount(obj)" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
                     <path
                         d="M280-440h400v-80H280v80ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z" />
                 </svg>
                 <span style="font-size: 14px; font-weight: 600; color: black;" class="mt-4">
                     {{obj.quantity}}
                 </span>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" style="cursor: pointer;" (click)="increaseCount(obj)" viewBox="0 -960 960 960" width="24px"
-                    fill="#5f6368">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" style="cursor: pointer;"
+                    (click)="increaseCount(obj)" viewBox="0 -960 960 960" width="24px" fill="#5f6368">
                     <path
                         d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160Zm40 200q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z" />
                 </svg>
