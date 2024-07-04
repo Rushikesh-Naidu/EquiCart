@@ -58,17 +58,17 @@ export class LoginComponent implements OnInit {
               this.snackBar.open("Admin login successful..!","Okay",{
                 duration: 3000
               })
-              window.sessionStorage.setItem("isAdmin", "true");
-              window.sessionStorage.setItem("name",res[0].name);
-              window.sessionStorage.setItem("phone",res[0].phone);
+              sessionStorage.setItem("isAdmin", "true");
+              sessionStorage.setItem("name",res[0].name);
+              sessionStorage.setItem("phone",res[0].phone);
               this.router.navigate(['/product'])
             } else {
               this.snackBar.open("User login successful..!","Okay",{
                 duration: 3000
               })
-              window.sessionStorage.setItem("isAdmin", "false");
-              window.sessionStorage.setItem("name",res[0].name);
-              window.sessionStorage.setItem("phone",res[0].phone);
+              sessionStorage.setItem("isAdmin", "false");
+              sessionStorage.setItem("name",res[0].name);
+              sessionStorage.setItem("phone",res[0].phone);
               this.router.navigate(['/home'])
             }
           } else {

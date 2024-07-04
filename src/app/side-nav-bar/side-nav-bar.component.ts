@@ -40,7 +40,7 @@ export class SideNavBarComponent {
   ngOnInit() {
     this.pathName = this.router.url
     console.log(this.pathName);
-    if(window.sessionStorage.getItem("isAdmin")=="true"){
+    if(sessionStorage.getItem("isAdmin")=="true"){
       this.accountType = "ADMIN"
     } else {
       this.accountType = "USER"
