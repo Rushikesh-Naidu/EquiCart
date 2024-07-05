@@ -34,6 +34,7 @@ import { MatRadioModule } from '@angular/material/radio';
 })
 export class CartComponent {
   cartList:any=[];
+  storesList: any = [];
 
   // cartList = [
   //   {
@@ -82,6 +83,7 @@ export class CartComponent {
 
   ngOnInit(){
     this.getCartList();
+    this.getStores();
   }
 
   getCartList(){
@@ -91,6 +93,16 @@ export class CartComponent {
         this.cartList = res;
       }, error:(err:any)=>{
 
+      }
+    })
+  }
+
+  getStores(){
+    var url = 'getAllStores';
+    this.apiSerice.getMethod(url).subscribe({
+      next:(res:any)=>{
+        console.log(res);
+        this.storesList = res;
       }
     })
   }

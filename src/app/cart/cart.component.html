@@ -30,32 +30,122 @@
         </div>
     </div>
     <hr>
-    <div class="row">
+    <div class="row" *ngIf="storesList[0]">
         <div class="col-1" style="height: 100px; display: flex; align-items: center;">
             <mat-radio-button value="1">
             </mat-radio-button>
         </div>
         <div class="col-4">
-            <img width="100px" height="100px" src="https://yt3.googleusercontent.com/YnrIWet65YxJQJlwlXI33E5r22UzWWHYGoL4Jtx_V2pvdbyhgLN1SAASnFOGZ4CuKjBNZjMFTQ=s900-c-k-c0x00ffffff-no-rj" alt="">
+            <img width="100px" height="100px" [src]="storesList[0].logo" alt="">
         </div>
         <div class="col-7" style="text-align: end; font-size: 20px; height: 100px; display: flex; align-items: center;">
-            <s style="color: red;" class="me-2">Rs 200/-</s>
-            <span style="color: green;">Rs 179/-</span>
+            <s style="color: red;" class="me-2">Rs 495/-</s>
+            <span style="color: green;">Rs 395/-</span>
         </div>
     </div>
-    <hr>
-    <div class="row">
+    <hr *ngIf="storesList[0]">
+    <div class="row" *ngIf="storesList[1]">
         <div class="col-1" style="height: 100px; display: flex; align-items: center;">
             <mat-radio-button value="1">
             </mat-radio-button>
         </div>
         <div class="col-4">
-            <img width="100px" height="100px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvyY9h2MT3h0_qEukV3jQ1pNe__osgG0h4Pw&s" alt="">
+            <img width="100px" height="100px" [src]="storesList[1].logo" alt="">
         </div>
         <div class="col-7" style="text-align: end; font-size: 20px; height: 100px; display: flex; align-items: center;">
-            <s style="color: red;" class="me-2">Rs 200/-</s>
-            <span style="color: green;">Rs 165/-</span>
+            <s style="color: red;" class="me-2">Rs 495/-</s>
+            <span style="color: green;">Rs 425/-</span>
         </div>
     </div>
+    <hr *ngIf="storesList[1]">
+    <div class="row" *ngIf="storesList[2]">
+        <div class="col-1" style="height: 100px; display: flex; align-items: center;">
+            <mat-radio-button value="1">
+            </mat-radio-button>
+        </div>
+        <div class="col-4">
+            <img width="100px" height="100px" [src]="storesList[2].logo" alt="">
+        </div>
+        <div class="col-7" style="text-align: end; font-size: 20px; height: 100px; display: flex; align-items: center;">
+            <s style="color: red;" class="me-2">Rs 495/-</s>
+            <span style="color: green;">Rs 356/-</span>
+        </div>
+    </div>
+    <hr *ngIf="storesList[2]">
+
+    <div class="row" *ngIf="storesList[3]">
+        <div class="col-1" style="height: 100px; display: flex; align-items: center;">
+            <mat-radio-button value="1">
+            </mat-radio-button>
+        </div>
+        <div class="col-4">
+            <img width="100px" height="100px" [src]="storesList[3].logo" alt="">
+        </div>
+        <div class="col-7" style="text-align: end; font-size: 20px; height: 100px; display: flex; align-items: center;">
+            <s style="color: red;" class="me-2">Rs 495/-</s>
+            <span style="color: green;">Rs 399/-</span>
+        </div>
+    </div>
+    <hr *ngIf="storesList[3]">
+
+    <div class="row" *ngIf="storesList[4]">
+        <div class="col-1" style="height: 100px; display: flex; align-items: center;">
+            <mat-radio-button value="1">
+            </mat-radio-button>
+        </div>
+        <div class="col-4">
+            <img width="100px" height="100px" [src]="storesList[4].logo" alt="">
+        </div>
+        <div class="col-7" style="text-align: end; font-size: 20px; height: 100px; display: flex; align-items: center;">
+            <s style="color: red;" class="me-2">Rs 495/-</s>
+            <span style="color: green;">Rs 490/-</span>
+        </div>
+    </div>
+    <hr *ngIf="storesList[4]">
+
+    <div class="row" *ngIf="storesList[5]">
+        <div class="col-1" style="height: 100px; display: flex; align-items: center;">
+            <mat-radio-button value="1">
+            </mat-radio-button>
+        </div>
+        <div class="col-4">
+            <img width="100px" height="100px" [src]="storesList[5].logo" alt="">
+        </div>
+        <div class="col-7" style="text-align: end; font-size: 20px; height: 100px; display: flex; align-items: center;">
+            <s style="color: red;" class="me-2">Rs 495/-</s>
+            <span style="color: green;">Rs 421/-</span>
+        </div>
+    </div>
+    <hr *ngIf="storesList[5]">
+
+    <div class="row" *ngIf="storesList[6]">
+        <div class="col-1" style="height: 100px; display: flex; align-items: center;">
+            <mat-radio-button value="1">
+            </mat-radio-button>
+        </div>
+        <div class="col-4">
+            <img width="100px" height="100px" [src]="storesList[6].logo" alt="">
+        </div>
+        <div class="col-7" style="text-align: end; font-size: 20px; height: 100px; display: flex; align-items: center;">
+            <s style="color: red;" class="me-2">Rs 495/-</s>
+            <span style="color: green;">Rs 256/-</span>
+        </div>
+    </div>
+    <hr *ngIf="storesList[6]">
+
+    <div class="row" *ngIf="storesList[7]">
+        <div class="col-1" style="height: 100px; display: flex; align-items: center;">
+            <mat-radio-button value="1">
+            </mat-radio-button>
+        </div>
+        <div class="col-4">
+            <img width="100px" height="100px" [src]="storesList[7].logo" alt="">
+        </div>
+        <div class="col-7" style="text-align: end; font-size: 20px; height: 100px; display: flex; align-items: center;">
+            <s style="color: red;" class="me-2">Rs 495/-</s>
+            <span style="color: green;">Rs 426/-</span>
+        </div>
+    </div>
+    <hr *ngIf="storesList[7]">
 </div>
-<button mat-raised-button style="background-color: orange; float: right;" class="mt-2">Checkout</button>
+<button mat-raised-button style="background-color: orange; float: right;" class="mt-2"><a href="https://rzp.io/l/DfXFU8L">Checkout</a></button>

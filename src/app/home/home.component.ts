@@ -34,12 +34,19 @@ export class HomeComponent {
   homeForm: FormGroup;
   filteredProducts: any;
   productList: any = [];
+  userID: any;
+  userPhone: string | null;
+  userDetails: any;
+  userCartDetails: any;
 
   constructor(
     public router: Router,
     public formBuilder: FormBuilder,
     public apiSerice: ApiService
-  ) { }
+  ) { 
+    this.userID = sessionStorage.getItem('id');
+    this.userPhone = sessionStorage.getItem('phone')
+  }
 
 
   ngOnInit() {
@@ -48,7 +55,22 @@ export class HomeComponent {
       searchList: ['']
     })
 
+    this.getUserDetails();
     this.getProductList();
+  }
+
+  getUserDetails(){
+    var url = 'userValid/'+this.userPhone;
+    this.apiSerice.getMethod(url).subscribe({
+      next:(res:any)=>{
+        console.log(res);
+        this.userDetails = res[0];
+        this.userCartDetails = res[0].cartProducts;
+        
+      },error:(err:any)=>{
+        console.log(err);
+      }
+    })
   }
 
   getProductList() {
@@ -67,17 +89,34 @@ export class HomeComponent {
   }
 
   increaseCount(obj: any) {
-    if (obj.quantity >= 0) {
-      obj.quantity++;
-      var url = "addToCart";
-      let reqBody = obj
-      this.apiSerice.postMethod(url, reqBody).subscribe({
-        next: (res:any)=>{
-
-        }, error: (err: any)=>{
-          console.log(err);
+    if(this.userCartDetails.length === 0){
+      var url = "updateUserCart";
+      let reqBody = {
+        cartProducts : [obj]
+      }
+      this.apiSerice.putMethod(url, this.userID, obj).subscribe({
+        next:(res:any)=>{
+          this.getUserDetails();
         }
       })
+    } else {
+
+    }
+    if (obj.quantity == 0) {
+      obj.quantity++;
+      var url = "addUserCart/"+this.userID;
+      let reqBody = obj
+      console.log(obj);
+      console.log(this.userID);
+      
+      
+      // this.apiSerice.postMethod(url, reqBody).subscribe({
+      //   next: (res:any)=>{
+
+      //   }, error: (err: any)=>{
+      //     console.log(err);
+      //   }
+      // })
     }
   }
 

@@ -69,6 +69,7 @@ export class LoginComponent implements OnInit {
               sessionStorage.setItem("isAdmin", "false");
               sessionStorage.setItem("name",res[0].name);
               sessionStorage.setItem("phone",res[0].phone);
+              sessionStorage.setItem("id",res[0]._id);
               this.router.navigate(['/home'])
             }
           } else {
