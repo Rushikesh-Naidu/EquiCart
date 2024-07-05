@@ -89,34 +89,8 @@ export class HomeComponent {
   }
 
   increaseCount(obj: any) {
-    if(this.userCartDetails.length === 0){
-      var url = "updateUserCart";
-      let reqBody = {
-        cartProducts : [obj]
-      }
-      this.apiSerice.putMethod(url, this.userID, obj).subscribe({
-        next:(res:any)=>{
-          this.getUserDetails();
-        }
-      })
-    } else {
-
-    }
-    if (obj.quantity == 0) {
+    if (obj.quantity >= 0) {
       obj.quantity++;
-      var url = "addUserCart/"+this.userID;
-      let reqBody = obj
-      console.log(obj);
-      console.log(this.userID);
-      
-      
-      // this.apiSerice.postMethod(url, reqBody).subscribe({
-      //   next: (res:any)=>{
-
-      //   }, error: (err: any)=>{
-      //     console.log(err);
-      //   }
-      // })
     }
   }
 
